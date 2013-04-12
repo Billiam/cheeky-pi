@@ -1,4 +1,6 @@
 $:.unshift(File.dirname(__FILE__))
+
+require 'cheeky-pi/version'
 require 'cheeky-pi/color'
 require 'cheeky-pi/factory'
 require 'cheeky-pi/light'
@@ -34,4 +36,3 @@ module CheekyPi
     end
   end
 end
-
