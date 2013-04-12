@@ -35,7 +35,11 @@ module CheekyPi
     end
 
     def success!
-      from_sym :green!
+      from_sym :green
+    end
+
+    def off!
+      from_sym :off
     end
 
     # Set light to a given color

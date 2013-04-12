@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description   = "Simple usbled ruby library"
   s.authors       = ["Billiam"]
   s.email         = 'billiamthesecond@gmail.com'
-  s.files         = `git ls-files`.split($/)
+  s.files         = Dir["{lib}/**/*.rb", "{lib}/**/*.rake", "{lib}/**/*.yml", "LICENSE", "*.md"]
   s.homepage      = 'http://github.com/billiam/cheeeky-pi'
   s.require_paths = ["lib"]
 
