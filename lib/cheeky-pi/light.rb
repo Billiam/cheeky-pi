@@ -26,6 +26,18 @@ module CheekyPi
       set @last_color.darken(percent)
     end
 
+    def building!
+      from_sym :blue
+    end
+
+    def failure!
+      from_sym :red
+    end
+
+    def success!
+      from_sym :green!
+    end
+
     # Set light to a given color
     def set(color)
 
