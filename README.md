@@ -52,7 +52,7 @@ CheekyPi.new.light.transition! [255, 0, 255]
 CheekyPi.new.light.throb! [0, 255, 0], [0, 0, 255], 10
 ```
 
-##$ Fun with promises
+### Fun with promises
 
 ```ruby
 light = CheekyPi.new.light
