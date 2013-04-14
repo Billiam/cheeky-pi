@@ -32,8 +32,9 @@ EventMachine.run {
 ### Multiple lights:
 
 ```ruby
-light1 = CheekyPi.lights[0]
-light2 = CheekyPi.lights[1]
+pi = CheekyPi.new
+light1 = pi.lights[0]
+light2 = pi.lights[1]
 ...
 light1.failure
 light2.success
