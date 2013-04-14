@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Billiam"]
   s.email         = 'billiamthesecond@gmail.com'
   s.files         = Dir["{lib}/**/*.rb", "{lib}/**/*.rake", "{lib}/**/*.yml", "LICENSE", "*.md"]
-  s.homepage      = 'http://github.com/billiam/cheeeky-pi'
+  s.homepage      = 'http://github.com/billiam/cheeky-pi'
   s.require_paths = ["lib"]
 
   s.add_dependency('eventmachine', '~> 1.0.3')
