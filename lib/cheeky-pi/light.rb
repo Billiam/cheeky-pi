@@ -1,55 +1,99 @@
+require 'cheeky-pi/light_interface'
+require 'cheeky-pi/color'
+require 'cheeky-pi/animation/fade'
+require 'cheeky-pi/animation/throb'
+
 module CheekyPi
   class Light
+    MAX = 90
 
     # Initialize with a path and optional color
-    def initialize(path, color=nil)
-      @path = path
-
-      @r = "#{@path}/red"
-      @g = "#{@path}/green"
-      @b = "#{@path}/blue"
-
-      set color unless color.nil?
+    def initialize(path)
+      @light = LightInterface.new(path)
+      @last_color = @light.fetch
     end
 
-    def from_sym(name)
-      set Color.create(COLOR[name])
+    def animation
+      @animation
     end
 
-    def lighten (percent)
-      return unless @last_color
-      set @last_color.lighten(percent)
+    def animation=(new_animation)
+      stop_animation
+      @animation = new_animation
     end
 
-    def darken (percent)
-      return unless @last_color
-      set @last_color.darken(percent)
+    def stop_animation
+      self.animation.halt if self.animation
     end
 
-    def building!
-      from_sym :blue
+    def building
+      start_color = [6, 6, 25]
+      end_color = [6, 6, MAX]
+
+      transition!(start_color).then do
+        throb!(3, start_color, end_color)
+      end
     end
 
-    def failure!
-      from_sym :red
+    def failure
+      start_color = [30, 0, 0]
+      end_color = [MAX, 30, 0]
+
+      transition!(start_color).then do
+        throb!(1, start_color, end_color)
+      end
     end
 
-    def success!
-      from_sym :green
+    def success
+      transition!([0, MAX, 0])
     end
 
-    def off!
-      from_sym :off
+    def off
+      transition!(COLOR[:black])
+    end
+
+    def throb (period, from, to)
+      Animation::Throb.new nil, self, {
+        from: Color.create(from),
+        to: Color.create(to),
+        period: period,
+        type: :sine
+      }
+    end
+
+    def throb! (period, from, to)
+      self.animation = throb(period, from, to)
+
+      self.animation.promise
+    end
+
+
+    def transition(to, duration=2)
+      to = Color.create(to)
+
+      #Set color transition time based on distance, with a maximum of 2 seconds
+      #(number from 0-255)
+      distance = @last_color.distance(to)
+      seconds = duration * [distance, MAX].max / MAX
+
+      Animation::Fade.new seconds, self, { from: @last_color, to: to }
+    end
+
+
+    def transition!(to)
+      self.animation = transition to
+
+      self.animation.promise
+    end
+
+    def color
+      set Color.create(color)
     end
 
     # Set light to a given color
     def set(color)
-
       @last_color = color
-
-      IO.write(@r, color.r)
-      IO.write(@g, color.g)
-      IO.write(@b, color.b)
+      @light.set(color)
     end
   end
 end
