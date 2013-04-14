@@ -1,3 +1,5 @@
+require 'cheeky-pi/light'
+
 module CheekyPi
   module Factory
     def self.find_lights

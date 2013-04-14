@@ -1,21 +1,18 @@
 $:.unshift(File.dirname(__FILE__))
-
 require 'cheeky-pi/version'
-require 'cheeky-pi/color'
 require 'cheeky-pi/factory'
-require 'cheeky-pi/light'
-
 
 module CheekyPi
   COLOR = {
-    :off => [0, 0, 0],
-    :red => [255, 0, 0],
-    :green => [0, 255, 0],
-    :blue => [0, 0, 255],
-    :yellow => [255,255,0],
-    :aqua => [0,255,255],
-    :purple => [255,0,255],
-    :white => [255,255,255]
+    off:    [0, 0, 0],
+    black:  [0, 0, 0],
+    red:    [255, 0, 0],
+    green:  [0, 255, 0],
+    blue:   [0, 0, 255],
+    yellow: [255,255,0],
+    aqua:   [0,255,255],
+    purple: [255,0,255],
+    white:  [255,255,255],
   }
 
   def self.new

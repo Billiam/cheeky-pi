@@ -5,7 +5,7 @@ require 'cheeky-pi/version'
 
 Gem::Specification.new do |s|
   s.name          = 'cheeky-pi'
-  s.version     = CheekyPi::VERSION
+  s.version       = CheekyPi::VERSION
   s.date          = '2013-04-10'
   s.summary       = "PI led helper"
   s.description   = "Simple usbled ruby library"
