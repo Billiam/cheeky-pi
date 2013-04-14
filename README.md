@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require 'cheeky-pi`
+require 'cheeky-pi'
 require 'eventmachine'
 
 light = CheekyPi.new.light
