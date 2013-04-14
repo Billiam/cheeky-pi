@@ -11,6 +11,11 @@ module CheekyPi
       blend(self.class.create(COLOR[:off]), percent)
     end
 
+    # Returns color distance (maximum of rgb distances individually) from a target color
+    def distance(color)
+      [(self.r - color.r).abs, (self.g - color.g).abs, (self.b - color.b).abs].max
+    end
+
     # Blend with another color
     def blend(color, opacity)
       self.class.new(
