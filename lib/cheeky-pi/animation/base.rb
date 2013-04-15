@@ -6,7 +6,7 @@ module CheekyPi
 
     class Base
 
-      TICKRATE = 0.1
+      TICKRATE = 0.033
 
       def initialize(duration, light, options={})
         @duration = duration

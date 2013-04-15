@@ -27,8 +27,8 @@ module CheekyPi
     end
 
     def building
-      start_color = [6, 6, 25]
-      end_color = [6, 6, MAX]
+      start_color = [5, 5, 25]
+      end_color = [10, 15, MAX]
 
       transition!(start_color).then do
         throb!(3, start_color, end_color)
@@ -37,7 +37,7 @@ module CheekyPi
 
     def failure
       start_color = [30, 0, 0]
-      end_color = [MAX, 30, 0]
+      end_color = [MAX, 25, 5]
 
       transition!(start_color).then do
         throb!(1, start_color, end_color)

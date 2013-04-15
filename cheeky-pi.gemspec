@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version       = CheekyPi::VERSION
   s.date          = '2013-04-10'
   s.summary       = "PI led helper"
-  s.description   = "Simple usbled ruby library"
+  s.description   = "EventMachine-friendly library for working with the DreamCheeky Webmail Notifier."
   s.authors       = ["Billiam"]
   s.email         = 'billiamthesecond@gmail.com'
   s.files         = Dir["{lib}/**/*.rb", "{lib}/**/*.rake", "{lib}/**/*.yml", "LICENSE", "*.md"]
